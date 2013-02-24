@@ -17,14 +17,14 @@ public class PropertiesUtil {
 	private static Logger logger = Logger.getLogger(PropertiesUtil.class);
 
 	/** properties file name **/
-	private final static String PROPERTIES_FILE = "iuclid5client.properties";
+	private final static String PROPERTIES_FILE = "net/idea/i5wscli/iuclid5client.properties";
 	
 	/** property key **/
-	private final static String USERNAME_KEY = "user";
+	private final static String USERNAME_KEY = "i5.user";
 	/** property key **/
-	private final static String PASSWORD_KEY = "pass";
+	private final static String PASSWORD_KEY = "i5.pass";
 	/** property key **/
-	private final static String TARGET_KEY = "iuclid5_services_url";
+	private final static String TARGET_KEY = "i5.server";
 
 	/**
 	 * Initialize properties
