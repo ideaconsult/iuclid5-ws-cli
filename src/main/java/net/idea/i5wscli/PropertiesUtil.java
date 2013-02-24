@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import org.apache.log4j.Logger;
+import net.idea.i5wscli.session.SessionEngine;
 
 /**
  * <code>PropertiesUtil</code> is helper class for 
@@ -14,7 +16,7 @@ import org.apache.log4j.Logger;
 public class PropertiesUtil {
 
 	private static Properties properties;
-	private static Logger logger = Logger.getLogger(PropertiesUtil.class);
+	private static Logger logger = Logger.getLogger(PropertiesUtil.class.getName());
 
 	/** properties file name **/
 	private final static String PROPERTIES_FILE = "net/idea/i5wscli/iuclid5client.properties";
@@ -35,7 +37,7 @@ public class PropertiesUtil {
 		properties.setProperty(PASSWORD_KEY, "webservice");
 		properties.setProperty(TARGET_KEY, "http://ideaconsult.dyndns.org:8080/i5wsruntime/services");
 		try {
-			logger.debug("Loading properties from configuration file");
+			logger.fine("Loading properties from configuration file");
 			InputStream inputStream = PropertiesUtil.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE);
 			
 			if (inputStream == null) {
@@ -50,12 +52,12 @@ public class PropertiesUtil {
 					sb.append(properties.getProperty(key.toString()));
 					sb.append("\n");
 				}
-				logger.info(sb);
+				logger.info(sb.toString());
 			} else {
 				properties.load(inputStream);
 			}
 		} catch (IOException e) {
-			logger.error(e);
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		}
 	}
 
